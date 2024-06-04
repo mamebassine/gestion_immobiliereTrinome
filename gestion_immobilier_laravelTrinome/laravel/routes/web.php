@@ -3,7 +3,11 @@
 use App\Http\Controllers\BienController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/biens', [BienController::class, 'listBiens']);//aff
+// Afficher la liste des biens
+Route::get('/biens', [BienController::class, 'listBiens']);
 
+// Afficher le formulaire d'ajout
 Route::get('/ajout', [BienController::class, 'ajoutBiens']);
-Route::post('/traitementAjout',[BienController::class, 'insertBiens'])->name('traitementBien');
+
+// Traiter l'ajout d'un bien
+Route::post('/traitementAjout', [BienController::class, 'insertBiens'])->name('traitementBien');

@@ -8,8 +8,8 @@ use Illuminate\Http\Request;
 class BienController extends Controller
 {
     public function listBiens(){
-        $bien = Bien::all();
-        return view('biens.accueil', compact('bien'));
+        $biens = Bien::all();
+        return view('biens.accueil', compact('biens'));
     }
     public function ajoutBiens(){ //afficher le formulaire ajout
         return view('biens.ajouter');
