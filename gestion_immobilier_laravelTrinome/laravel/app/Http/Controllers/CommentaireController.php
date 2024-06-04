@@ -8,12 +8,14 @@ use Illuminate\Http\Request;
 class CommentaireController extends Controller
 {
     // Fonction pour afficher tous les commentaires
-    public function lireCommentaires()
+    public function listCommentaires()
+
     {
-        // Récupérer tous les commentaires depuis la base de données
+    
         $commentaires = Commentaire::all();
-        // Afficher la vue avec la liste des commentaires
+    
         return view('commentaires.listCommentaire', compact('commentaires'));
+    
     }
 
     // Fonction pour ajouter un nouveau commentaire
