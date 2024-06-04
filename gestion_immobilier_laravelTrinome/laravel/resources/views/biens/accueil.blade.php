@@ -19,15 +19,19 @@
     </nav>
 </header>
 <div class="container">
+    @foreach($biens as $bien)
     <div class="card" style="width: 18rem;">
-        <img src="images/image1.png" class="card-img-top" alt="ou es tu?">
+        <img src="{{$bien->image}}" class="card-img-top" alt="ou es tu?">
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <h5 class="card-title">{{$bien->nom}}</h5>
+          <p class="card-text">{{$bien->description}}</p>
+          <br>
+          <span>{{$bien->date_ajout}}</span>
+          <a href="#" class="btn btn-primary">Plus d'information</a>
         </div>
       </div>
   </div>
+  @endforeach
    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
