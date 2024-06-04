@@ -14,3 +14,4 @@ Route::post('/traitementAjout', [BienController::class, 'insertBiens'])->name('t
 //update
 Route::get('/biens/{id}/edit', [BienController::class, 'editBien'])->name('editerBien');
 Route::put('/biens/{id}', [BienController::class, 'updateBien'])->name('updateBien');
+Route::delete('/biens/{id}', [BienController::class, 'deleteBien'])->name('supprimerBien');

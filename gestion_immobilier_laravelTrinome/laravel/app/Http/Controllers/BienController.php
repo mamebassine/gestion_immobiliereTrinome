@@ -83,4 +83,14 @@ class BienController extends Controller
 
         return redirect('/biens')->with('success', 'Bien mis à jour avec succès.'); // Rediriger avec un message de succès
     }
+    // Supprimer un bien
+    public function deleteBien($id){
+        $bien = Bien::findOrFail($id);
+        if ($bien->image && file_exists(public_path('uploads/' . $bien->image))) {
+            unlink(public_path('uploads/' . $bien->image)); // Supprimer l'image associée du serveur
+        }
+        $bien->delete(); // Supprimer le bien de la base de données
+
+        return redirect('/biens')->with('success', 'Bien supprimé avec succès.');
+    }
 }
