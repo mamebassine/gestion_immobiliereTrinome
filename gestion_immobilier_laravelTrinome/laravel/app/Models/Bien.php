@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bien extends Model
 {
+    protected $dates = ['date_ajout'];
     protected $fillable = [ // les attibuts
         'nom',
         'image',
