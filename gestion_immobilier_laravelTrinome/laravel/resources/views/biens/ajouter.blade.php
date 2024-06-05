@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Ajouter un bien</title>
-   
+
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    
+
     <nav class="navbar bg-body-tertiary">
         <div class="container-fluid">
             <a class="navbar-brand">Ajouter Bien</a>
@@ -60,12 +60,17 @@
                                 </select>
                             </div>
                             <div class="form-group">
-                                <label for="statut">date</label>
-                                <input type="date" name="date_ajout" value="{{ \Carbon\Carbon::today()->format('d-m-Y') }}">                            </div>
-                            <div class="form-group">
+                                <label for="date_ajout">Date et heure d'ajout:</label>
+                                <input type="datetime-local" class="form-control" id="date_ajout" name="date_ajout" value="{{ \Carbon\Carbon::now()->format('Y-m-d\TH:i') }}" required>
+                            </div>
                                 <label for="image">Image:</label>
                                 <input type="file" class="form-control-file" id="image" name="image" required>
                             </div>
+                            <div class="form-group">
+                                <label for="admin_id">Admin ID:</label>
+                                <input type="text" class="form-control" id="admin_id" name="admin_id" value="1" readonly>
+                            </div>
+
                             <button type="submit" class="btn btn-primary">Ajouter</button>
                         </form>
                     </div>

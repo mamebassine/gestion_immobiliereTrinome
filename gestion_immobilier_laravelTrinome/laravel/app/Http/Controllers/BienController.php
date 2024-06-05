@@ -29,6 +29,7 @@ class BienController extends Controller
             'categorie'=>'required',
             'statut'=>'required',
             'date_ajout'=>'required',
+            'admin_id' => 'required|exists:administrateurs,id',
         ]);
 
         $imageNom = null; // Initialiser le nom de l'image à null
@@ -67,6 +68,7 @@ class BienController extends Controller
             'categorie'=>'required',
             'statut'=>'required',
             'date_ajout'=>'required|date',
+            'admin_id' => 'required|exists:administrateurs,id', 
         ]);
 
         $imageNom = $bien->image; // Garder l'ancien nom de l'image
