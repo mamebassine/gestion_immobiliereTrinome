@@ -4,22 +4,15 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Commentaire extends Model
 {
     use HasFactory;
 
-    protected $fillable = [
-        'date_publication',
-        'description',
-        'auteur',
-    ];
+    protected $fillable = ['auteur', 'description', 'bien_id'];
 
-    public function bien ()
-        {
-            return $this->belongsTo(Bien::class);
-        }
-
+    public function bien()
+    {
+        return $this->belongsTo(Bien::class);
+    }
 }
-

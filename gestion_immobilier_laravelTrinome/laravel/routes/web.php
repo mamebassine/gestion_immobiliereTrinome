@@ -1,21 +1,16 @@
 <?php
 
 use App\Http\Controllers\BienController;
-use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CommentaireController;
+use Illuminate\Support\Facades\Route;
 
+Route::get('/biens', [BienController::class, 'listBiens'])->name('biens');
+Route::get('/ajout', [BienController::class, 'ajoutBiens'])->name('ajout');
+Route::post('/traitementAjout', [BienController::class, 'insertBiens'])->name('traitementBien');
+Route::get('/details/{id}', [BienController::class, 'details'])->name('details');
 
-Route::get('/commentaires', [CommentaireController::class, 'lireCommentaires'])->name('lireCommentaire');
-Route::get('/ajouter', [CommentaireController::class, 'ajoutCommentaire'])->name('ajoutCommentaire');
-Route::post('/traitementAjout', [CommentaireController::class, 'traitementAjoutCommentaire'])->name('commentaireAjouter');
-Route::post('/mise-a-jour-commentaire/{id}', [CommentaireController::class, 'iseAjourCommentaire'])->name('miseAjourCommentaire');
-Route::post('/traitementMiseAjour', [CommentaireController::class, 'traitementMiseAjour'])->name('miseAjourTraitement');
-Route::get('/supprimer-commentaire/{id}', [CommentaireController::class, 'upprimerCommentaire'])->name('supprimmerCommentaire');
-
-// Afficher la liste des biens
-Route::get('/biens', [BienController::class, 'listBiens']);
-
-// Afficher le formulaire d'ajout
-Route::get('/ajout', [BienController::class, 'ajoutBiens']);
-Route::post('/traitementAjout',[BienController::class, 'insertBiens'])->name('traitementBien');
+Route::post('/commentaire/ajouter', [CommentaireController::class, 'ajouter'])->name('commentaireAjouter'); 
+Route::get('/commentaire/{id}/modifier', [CommentaireController::class, 'modifier'])->name('commentaireModifier');
+Route::put('/commentaire/{id}', [CommentaireController::class, 'mettreAJour'])->name('commentaireMettreAJour');
+Route::delete('/commentaire/{id}', [CommentaireController::class, 'supprimer'])->name('commentaireSupprimer');
 

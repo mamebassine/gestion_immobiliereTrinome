@@ -108,4 +108,71 @@ class CommentaireController extends Controller
         // Rediriger vers la page affichant tous les commentaires après la suppression
         return redirect()->route('lireCommentaires')->with('success', 'Commentaire supprimé avec succès');
     }
+
+    public function commentaireAjouter(Request $request)
+{
+    // Validate the form data
+    $request->validate([
+        'auteur' => 'equired|string|max:255',
+        'description' => 'equired|string|max:255',
+        'date_publication' => 'equired|date',
+        'bien_id' => 'equired|exists:biens,id', // Check if the bien ID exists
+    ]);
+
+    // Create a new comment
+    $commentaire = new Commentaire();
+    $commentaire->auteur = $request->input('auteur');
+    $commentaire->description = $request->input('description');
+    $commentaire->date_publication = $request->input('date_publication');
+    $commentaire->bien_id = $request->input('bien_id');
+    $commentaire->save();
+
+    // Redirect to the details page with a success message
+    return redirect()->route('details', $request->input('bien_id'))->with('success', 'Commentaire ajouté avec succès!');
+}
+
+public function ajouter(Request $request)
+{
+    $request->validate([
+        'auteur' => 'required|string|max:255',
+        'description' => 'required|string',
+        'bien_id' => 'required|exists:biens,id',
+    ]);
+
+    Commentaire::create([
+        'auteur' => $request->auteur,
+        'description' => $request->description,
+        'bien_id' => $request->bien_id,
+    ]);
+
+    return redirect()->back()->with('success', 'Commentaire ajouté avec succès.');
+}
+
+public function modifier($id)
+{
+    $commentaire = Commentaire::findOrFail($id);
+    return view('commentaires.modifier', compact('commentaire'));
+}
+
+public function mettreAJour(Request $request, $id)
+{
+    $request->validate([
+        'auteur' => 'required|string|max:255',
+        'description' => 'required|string',
+    ]);
+
+    $commentaire = Commentaire::findOrFail($id);
+    $commentaire->update($request->all());
+
+    return redirect()->back()->with('success', 'Commentaire modifié avec succès.');
+}
+
+public function supprimer($id)
+{
+    $commentaire = Commentaire::findOrFail($id);
+    $commentaire->delete();
+
+    return redirect()->back()->with('success', 'Commentaire supprimé avec succès.');
+}
+
 }
