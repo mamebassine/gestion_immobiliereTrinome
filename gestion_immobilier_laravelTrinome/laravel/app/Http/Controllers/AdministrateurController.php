@@ -32,9 +32,7 @@ class AdministrateurController extends Controller
             'mot_passe' => bcrypt($request->mot_passe),
         ]);
 
-        // Vous pouvez ajouter ici d'autres fonctionnalités, comme la redirection vers une page de confirmation, par exemple.
 
     }
 
-    // Les autres méthodes de votre contrôleur restent inchangées
 }

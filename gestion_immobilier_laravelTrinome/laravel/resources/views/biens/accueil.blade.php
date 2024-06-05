@@ -41,7 +41,7 @@
                 <div class="card mb-4 shadow-sm">
                     <img src="{{ asset('uploads/' . $bien->image) }}" class="card-img-top" alt="Image de {{$bien->nom}}">
                     <div class="card-body">
-                        <h2>175000 <strong>CFA</strong></h3>
+                        <h2>175000 <strong>CFA</strong></h2>
                         <h5 class="card-title">{{$bien->nom}}</h5>
                         <p class="card-text">{{$bien->description}}</p>
                         <p class="text-muted">{{$bien->categorie}}</p>
@@ -49,7 +49,7 @@
                         <p class="text-muted">{{$bien->statut}}</p>
                         <div class="d-flex justify-content-between align-items-center">
                             <div class="btn-group">
-                                <a href="#" class="btn btn-sm btn-outline-primary">Plus d'informations</a>
+                                <a href="{{ route('details', $bien->id) }}" class="btn btn-sm btn-outline-primary">Plus d'informations</a>
                                 <a href="{{ route('editerBien', $bien->id) }}" class="btn btn-sm btn-outline-warning">Modifier</a>
                             </div>
                             <form action="{{ route('supprimerBien', $bien->id) }}" method="POST" class="d-inline">
