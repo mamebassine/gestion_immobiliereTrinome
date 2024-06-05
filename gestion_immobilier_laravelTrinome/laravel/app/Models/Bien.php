@@ -18,13 +18,18 @@ class Bien extends Model
         'adresse',
         'statut',
         'date_ajout',
+        'admin_id',  
     ];
 
-    /**
-     * Relation avec les commentaires.
-     */
+    // Définir la relation avec les commentaires
     public function commentaires()
     {
         return $this->hasMany(Commentaire::class);
+    }
+
+    // Définir la relation avec les administrateurs
+    public function administrateur()
+    {
+        return $this->belongsTo(Administrateur::class, 'admin_id');
     }
 }
