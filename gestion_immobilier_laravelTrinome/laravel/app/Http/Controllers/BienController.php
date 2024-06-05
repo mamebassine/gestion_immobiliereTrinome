@@ -33,6 +33,7 @@ class BienController extends Controller
             'categorie'=>'required',
             'statut'=>'required',
             'date_ajout'=>'required',
+            'admin_id' => 'required|exists:administrateurs,id',
         ]);
 
         $imageNom = null; 
@@ -68,6 +69,7 @@ class BienController extends Controller
             'categorie'=>'required',
             'statut'=>'required',
             'date_ajout'=>'required|date',
+            'admin_id' => 'required|exists:administrateurs,id', 
         ]);
 
         $imageNom = $bien->image; 
