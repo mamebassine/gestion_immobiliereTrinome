@@ -7,16 +7,29 @@ use Illuminate\Database\Eloquent\Model;
 
 class Bien extends Model
 {
+    use HasFactory;
+
     protected $dates = ['date_ajout'];
-    protected $fillable = [ // les attibuts
+    protected $fillable = [
         'nom',
         'image',
         'categorie',
-        'text',
         'description',
         'adresse',
         'statut',
         'date_ajout',
+        'admin_id',  
     ];
-    use HasFactory;
+
+    // Définir la relation avec les commentaires
+    public function commentaires()
+    {
+        return $this->hasMany(Commentaire::class);
+    }
+
+    // Définir la relation avec les administrateurs
+    public function administrateur()
+    {
+        return $this->belongsTo(Administrateur::class, 'admin_id');
+    }
 }
