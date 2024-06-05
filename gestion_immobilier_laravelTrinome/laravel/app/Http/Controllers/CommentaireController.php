@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class CommentaireController extends Controller
 {
-    // Fonction pour afficher tous les commentaires
+   
     public function listCommentaires()
 
     {
