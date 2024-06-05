@@ -24,3 +24,7 @@ Route::get('/inscrire', [AdministrateurController::class, 'afficherFormulaire'])
 Route::post('/enregistrer_admin', [AdministrateurController::class, 'enregistrerDonne'])->name('enregistrer_admin');
 Route::put('/biens/{id}/update', [BienController::class, 'updateBien'])->name('updateBien');
 Route::delete('/biens/{id}/delete', [BienController::class, 'deleteBien'])->name('supprimerBien');
+//conn
+Route::get('/connexion', [AdministrateurController::class, 'pageConnexion'])->name('pageConnexion');
+Route::post('/auht', [UtilisateurController::class, 'connexion'])->name('connexion');
+

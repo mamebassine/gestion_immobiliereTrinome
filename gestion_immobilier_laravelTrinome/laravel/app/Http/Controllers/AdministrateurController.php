@@ -34,5 +34,23 @@ class AdministrateurController extends Controller
 
 
     }
+    public function pageConnexion()
+    {
+        return view('admins.connexion');
+    }
+    public function connexion(connexionRequest $request)
+    {
+        {
+            $credentials = $request->only('email', 'mot_de_passe');
+
+            if (Auth::attempt($credentials)) {
+                // Authentification réussie, rediriger l'utilisateur où vous le souhaitez
+                return view('/biens');
+            }
+
+            // Authentification échouée, rediriger avec un message d'erreur
+            return redirect()->route('pageConnexion')->with('error', 'Adresse email ou mot de passe incorrect.');
+        }
+    }
 
 }
