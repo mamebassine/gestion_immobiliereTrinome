@@ -18,7 +18,7 @@
 
         <!-- Formulaire d'ajout de commentaire -->
         <h2 class="mt-5">Laissez un commentaire</h2>
-        <form action="{{ route('commentaireAjouter') }}" method="post">
+        <form action="{{ route('commentaireAjouter', $bien->id) }}" method="post">
             @csrf
             <input type="hidden" name="bien_id" value="{{ $bien->id }}">
             <div class="mb-3">
@@ -40,12 +40,13 @@
                     <h5 class="card-title">{{ $commentaire->auteur }}</h5>
                     <p class="card-text">{{ $commentaire->description }}</p>
                     <p class="card-text"><small class="text-muted">Publié le {{ $commentaire->created_at->format('d-m-Y') }}</small></p>
-                    <a href="{{ route('commentaireModifier', $commentaire->id) }}" class="btn btn-primary">Modifier</a>
-                    <form action="{{ route('commentaireSupprimer', $commentaire->id) }}" method="post" style="display: inline-block;">
+                    <a href="{{ route('commentaireModifier', ['id' => $bien->id, 'idCommentaire' => $commentaire->id]) }}" class="btn btn-primary">Modifier</a>
+                    <form action="{{ route('commentaireSupprimer', ['id' => $bien->id, 'idCommentaire' => $commentaire->id]) }}" method="post" style="display: inline-block;">
                         @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Supprimer</button>
                     </form>
+                    
                 </div>
             </div>
         @endforeach
