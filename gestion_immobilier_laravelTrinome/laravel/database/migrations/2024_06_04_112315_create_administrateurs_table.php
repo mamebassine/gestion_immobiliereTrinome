@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('prenom',100);
             $table->string('adresse',255);
             $table->string('email',255);
-            $table->string('mot_passe',20);
+            $table->string('mot_passe',255);
             $table->timestamps();
         });
     }

@@ -81,8 +81,7 @@
                             <!-- Champ pour la date d'ajout du bien -->
                             <div class="form-group">
                                 <label for="date_ajout">Date:</label>
-                                <input type="date" class="form-control" id="date_ajout" name="date_ajout" value="{{ $bien->date_ajout->format('Y-m-d') }}" required>
-                            </div>
+                                <input type="date" class="form-control" id="date_ajout" name="date_ajout" value="{{ (new \DateTime($bien->date_ajout))->format('Y-m-d') }}" required>                            </div>
 
                             <!-- Champ pour l'image du bien -->
                             <div class="form-group">
@@ -95,7 +94,10 @@
                                     </div>
                                 @endif
                             </div>
-
+                            <div class="form-group">
+                                <label for="admin_id">Admin ID:</label>
+                                <input type="text" class="form-control" id="admin_id" name="admin_id" value="1" readonly>
+                            </div>
                             <!-- Bouton pour soumettre le formulaire -->
                             <button type="submit" class="btn btn-primary">Mettre à jour</button>
                         </form>
