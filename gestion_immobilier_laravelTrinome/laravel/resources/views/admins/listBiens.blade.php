@@ -39,13 +39,18 @@
             </div>
         </nav>
     </header>
+    <div class="container">
+        <div class="text-center">
+            <a href="{{ route('ajout') }}" class="btn btn-primary btn-lg">Ajouter un bien</a>
+        </div>
+    </div>
     <div class="container my-5">
         <div class="row">
             @foreach($biens as $bien)
             <div class="col-md-4">
                 <div class="card mb-4 shadow-sm h-100">
                     <img src="{{ asset('uploads/' . $bien->image) }}" class="card-img-top img-fluid h-100" alt="Image de {{$bien->nom}}">
-                    <div class="card-body d-flex flex-column"> 
+                    <div class="card-body d-flex flex-column">
                         <h2>175000 <strong>CFA</strong></h2>
                         <h5 class="card-title">{{$bien->nom}}</h5>
                         <p class="card-text">{{$bien->description}}</p>
@@ -54,7 +59,7 @@
                         <p class="text-muted">{{$bien->statut}}</p>
                         <div class="mt-auto">
                             <div class="btn-group mt-auto">
-                                <a href="{{ route('details', $bien->id) }}" class="btn btn-sm btn-outline-primary">Plus d'informations</a>
+                                <a href="{{ route('detailsBien', $bien->id) }}" class="btn btn-sm btn-outline-primary">Plus d'informations</a>
                                 <a href="{{ route('editerBien', $bien->id) }}" class="btn btn-sm btn-outline-warning">Modifier</a>
                             </div>
                             <form action="{{ route('supprimerBien', $bien->id) }}" method="POST" class="d-inline mt-2">

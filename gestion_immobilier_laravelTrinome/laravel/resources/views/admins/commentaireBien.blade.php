@@ -17,7 +17,7 @@
         <p>Date d'ajout : {{ $bien->created_at->format('d-m-Y') }}</p>
 
         <!-- Formulaire d'ajout de commentaire -->
-        <h2 class="mt-5">Laissez un commentaire</h2>
+        {{-- <h2 class="mt-5">Laissez un commentaire</h2>
         <form action="{{ route('commentaireAjouter', $bien->id) }}" method="post">
             @csrf
             <input type="hidden" name="bien_id" value="{{ $bien->id }}">
@@ -30,7 +30,7 @@
                 <textarea class="form-control" id="description" name="description" rows="4" required></textarea>
             </div>
             <button type="submit" class="btn btn-primary">Publier</button>
-        </form>
+        </form> --}}
 
         <!-- Liste des commentaires -->
         <h2 class="mt-5">Commentaires</h2>
@@ -40,12 +40,12 @@
                     <p class="card-title"><strong>Nom complet: </strong><span>{{ $commentaire->auteur }}</span></p>
                     <p class="card-text"><strong>Commentaire:</strong><br>{{ $commentaire->description }}</p>
                     <p class="card-text"><small class="text-muted">Publié le {{ $commentaire->created_at->format('d-m-Y') }}</small></p>
-                    {{-- <a href="{{ route('commentaireModifier', ['id' => $bien->id, 'idCommentaire' => $commentaire->id]) }}" class="btn btn-primary">Modifier</a> --}}
-                    {{-- <form action="{{ route('commentaireSupprimer', ['id' => $bien->id, 'idCommentaire' => $commentaire->id]) }}" method="post" style="display: inline-block;"> --}}
-                        {{-- @csrf
+                    <a href="{{ route('commentaireModifier', ['id' => $bien->id, 'idCommentaire' => $commentaire->id]) }}" class="btn btn-primary">Modifier</a>
+                    <form action="{{ route('commentaireSupprimer', ['id' => $bien->id, 'idCommentaire' => $commentaire->id]) }}" method="post" style="display: inline-block;">
+                     @csrf
                         @method('DELETE')
                         <button type="submit" class="btn btn-danger">Supprimer</button>
-                    </form> --}}
+                    </form>
 
                 </div>
             </div>
@@ -53,7 +53,7 @@
     </div>
     <div class="row justify-content-center mt-3">
         <div class="col-md-8">
-            <a href="{{ route('biens') }}" class="btn btn-secondary btn-block">Retour à la liste des biens</a>
+            <a href="{{ route('listBiens') }}" class="btn btn-secondary btn-block">Retour à la liste des biens</a>
         </div>
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>

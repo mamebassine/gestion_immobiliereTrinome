@@ -5,7 +5,7 @@ use App\Http\Controllers\CommentaireController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdministrateurController;
 
-Route::get('/biens', [BienController::class, 'listBiens'])->name('biens');
+Route::get('/', [BienController::class, 'listBiens'])->name('biens');
 Route::get('/ajout', [BienController::class, 'ajoutBiens'])->name('ajout');
 Route::post('/biens/ajout', [BienController::class, 'insertBiens'])->name('traitementBien');
 Route::get('/details/{id}', [BienController::class, 'details'])->name('details');
@@ -28,4 +28,5 @@ Route::post('/connexion', [AdministrateurController::class, 'connexion'])->name(
 Route::get('/deconnexion', [AdministrateurController::class, 'deconnexion'])->name('deconnexion');
 //afficher la liste des bien pour admin
 Route::get('/listBien', [AdministrateurController::class, 'adminBien'])->name('listBiens');
-
+//page détaille pour administrateur 
+Route::get('/detailsBien/{id}', [AdministrateurController::class, 'detailsBien'])->name('detailsBien');

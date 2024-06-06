@@ -63,7 +63,7 @@ class AdministrateurController extends Controller
     public function deconnexion()
     {
         Auth::logout(); // Déconnexion de l'utilisateur
-        return redirect()->route('pageConnexion'); // Redirection vers la page de connexion
+        return redirect()->route('/'); // Redirection vers la page accueil
     }
 
     public function adminBien()
@@ -71,4 +71,10 @@ class AdministrateurController extends Controller
             $biens = Bien::all();
             return view('admins.listBiens', compact('biens'));
         }
+
+        public function detailsBien($id)
+{
+    $bien = Bien::findOrFail($id);
+    return view('admins.commentaireBien')->with('bien', $bien);
+}
 }

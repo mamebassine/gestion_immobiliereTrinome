@@ -84,7 +84,7 @@ class BienController extends Controller
 
         $bien->update($request->except('_token', '_method', 'image') + ['image' => $imageNom]);
 
-        return redirect('/biens')->with('success', 'Bien mis à jour avec succès.');
+        return redirect('/listBien')->with('success', 'Bien mis à jour avec succès.');
     }
 
     public function deleteBien($id){
@@ -94,7 +94,7 @@ class BienController extends Controller
         }
         $bien->delete();
 
-        return redirect('/biens')->with('success', 'Bien supprimé avec succès.');
+        return redirect('/listBien')->with('success', 'Bien supprimé avec succès.');
     }
 
 }
