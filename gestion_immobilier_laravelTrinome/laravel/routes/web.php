@@ -25,4 +25,7 @@ Route::get('/inscrire', [AdministrateurController::class, 'afficherFormulaire'])
 Route::post('/enregistrer_admin', [AdministrateurController::class, 'enregistrerDonne'])->name('enregistrer_admin');
 Route::get('/connexion', [AdministrateurController::class, 'pageConnexion'])->name('pageConnexion');
 Route::post('/connexion', [AdministrateurController::class, 'connexion'])->name('connexion');
+Route::get('/deconnexion', [AdministrateurController::class, 'deconnexion'])->name('deconnexion');
+//afficher la liste des bien pour admin
+Route::get('/listBien', [AdministrateurController::class, 'adminBien'])->name('listBiens');
 

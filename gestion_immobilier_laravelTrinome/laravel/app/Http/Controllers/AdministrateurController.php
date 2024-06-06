@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bien;
 use Illuminate\Http\Request;
+use App\Models\Administrateur;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use App\Models\Administrateur;
 
 class AdministrateurController extends Controller
 {
@@ -53,10 +54,21 @@ class AdministrateurController extends Controller
         if ($administrateur && Hash::check($credentials['mot_passe'], $administrateur->mot_passe)) {
             // Authentification réussie
             Auth::login($administrateur);
-            return redirect()->route('biens');
+            return redirect()->route('listBiens');
         }
 
         // Authentification échouée, rediriger avec un message d'erreur
         return redirect()->route('pageConnexion')->with('error', 'Adresse email ou mot de passe incorrect.');
     }
+    public function deconnexion()
+    {
+        Auth::logout(); // Déconnexion de l'utilisateur
+        return redirect()->route('pageConnexion'); // Redirection vers la page de connexion
+    }
+
+    public function adminBien()
+        {
+            $biens = Bien::all();
+            return view('admins.listBiens', compact('biens'));
+        }
 }
