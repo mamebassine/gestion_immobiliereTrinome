@@ -30,6 +30,11 @@
                         <input class="form-control me-2" type="search" placeholder="Rechercher" aria-label="Rechercher">
                         <button class="btn btn-outline-success" type="submit">Recherche</button>
                     </form>
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('pageConnexion') }}">Connexion</a>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </nav>
