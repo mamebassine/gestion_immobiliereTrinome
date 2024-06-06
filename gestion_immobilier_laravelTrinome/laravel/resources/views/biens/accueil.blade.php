@@ -32,7 +32,7 @@
                     </form>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('pageConnexion') }}">Connexion</a>
+                            <a class="nav-link" href="{{ route('login') }}">Connexion</a>
                         </li>
                     </ul>
                 </div>
