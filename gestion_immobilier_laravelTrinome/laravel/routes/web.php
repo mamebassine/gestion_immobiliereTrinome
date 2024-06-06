@@ -19,8 +19,13 @@ Route::delete('/biens/{id}/commentaire/{idCommentaire}', [CommentaireController:
 Route::get('/biens/{id}/edit', [BienController::class, 'editBien'])->name('editerBien');
 Route::put('/biens/{id}', [BienController::class, 'updateBien'])->name('updateBien');
 Route::delete('/biens/{id}', [BienController::class, 'deleteBien'])->name('supprimerBien');
+
 //auth
 Route::get('/inscrire', [AdministrateurController::class, 'afficherFormulaire'])->name('inscrire');
 Route::post('/enregistrer_admin', [AdministrateurController::class, 'enregistrerDonne'])->name('enregistrer_admin');
-Route::put('/biens/{id}/update', [BienController::class, 'updateBien'])->name('updateBien');
-Route::delete('/biens/{id}/delete', [BienController::class, 'deleteBien'])->name('supprimerBien');
+Route::get('/connexion', [AdministrateurController::class, 'pageConnexion'])->name('pageConnexion');
+Route::post('/connexion', [AdministrateurController::class, 'connexion'])->name('connexion');
+Route::get('/deconnexion', [AdministrateurController::class, 'deconnexion'])->name('deconnexion');
+//afficher la liste des bien pour admin
+Route::get('/listBien', [AdministrateurController::class, 'adminBien'])->name('listBiens');
+

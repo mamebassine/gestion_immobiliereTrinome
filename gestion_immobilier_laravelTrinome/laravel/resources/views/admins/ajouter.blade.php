@@ -10,27 +10,31 @@
 </head>
 <body>
 
-    <nav class="navbar bg-body-tertiary">
-        <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
             <a class="navbar-brand">Ajouter Bien</a>
-            <form class="d-flex" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Recherche</button>
+            <form class="form-inline my-2 my-lg-0 ml-auto">
+                <input class="form-control mr-sm-2" type="search" placeholder="Rechercher" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Recherche</button>
             </form>
         </div>
     </nav>
-    <ul>
-        @foreach ($errors->all() as $error) <!-- Boucle à travers toutes les erreurs -->
-                <li class="alert alert-danger">{{$error}}</li>
-        @endforeach
-        </ul>
     <div class="container mt-5">
+        @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Ajouter un bien</div>
+                    <div class="card-header bg-primary text-white">Ajouter un bien</div>
                     <div class="card-body">
-                        <form action="{{route('traitementBien')}}" method="POST" enctype="multipart/form-data">
+                        <form action="{{ route('traitementBien') }}" method="POST" enctype="multipart/form-data">
                             @csrf
                             <div class="form-group">
                                 <label for="nom">Nom du bien:</label>
@@ -63,6 +67,7 @@
                                 <label for="date_ajout">Date et heure d'ajout:</label>
                                 <input type="datetime-local" class="form-control" id="date_ajout" name="date_ajout" value="{{ \Carbon\Carbon::now()->format('Y-m-d\TH:i') }}" required>
                             </div>
+                            <div class="form-group">
                                 <label for="image">Image:</label>
                                 <input type="file" class="form-control-file" id="image" name="image" required>
                             </div>
@@ -75,6 +80,11 @@
                         </form>
                     </div>
                 </div>
+            </div>
+        </div>
+        <div class="row justify-content-center mt-3">
+            <div class="col-md-8">
+                <a href="{{ route('listBiens') }}" class="btn btn-secondary btn-block">Retour à la liste des biens</a>
             </div>
         </div>
     </div>
